@@ -31,10 +31,10 @@ def __data_augmentation__(gaussian_blur=False, color_jitter=False):
         ]
     if color_jitter:
         bright = random.uniform(cfg.DATA_AUG.BRIGHT_MIN, cfg.DATA_AUG.BRIGHT_MAX)
-        contrast = random.uniform(cfg.DATA_AUG.CONTRAST_MIN, cfg.DATA_AUG.CONTRAST_MAX)
+        #contrast = random.uniform(cfg.DATA_AUG.CONTRAST_MIN, cfg.DATA_AUG.CONTRAST_MAX)
         transform_list += [
             Transforms.ColorJitter(brightness=[bright, bright],
-                                   contrast=[contrast, contrast])
+                                   contrast=[0, 0])
         ]
     # Normalization
     transform_list += [
