@@ -21,8 +21,8 @@ class MessytableTestDataset(Dataset):
         self.normalize_transform = Transforms.Compose([
             Transforms.ToTensor(),
             Transforms.Normalize(
-                mean=[0.5],
-                std=[0.5],
+                mean=[0.485, 0.456, 0.406],
+                std=[0.229, 0.224, 0.225],
             ),
         ])
 
@@ -31,8 +31,8 @@ class MessytableTestDataset(Dataset):
 
     def __getitem__(self, idx):
         if self.onReal:
-            img_L_rgb = np.array(Image.open(self.img_L[idx]).convert(mode='L'))
-            img_R_rgb = np.array(Image.open(self.img_R[idx]).convert(mode='L'))
+            img_L_rgb = np.array(Image.open(self.img_L[idx]).convert(mode='RGB'))
+            img_R_rgb = np.array(Image.open(self.img_R[idx]).convert(mode='RGB'))
         else:
             img_L_rgb = np.array(Image.open(self.img_L[idx]))[:, :, :-1]
             img_R_rgb = np.array(Image.open(self.img_R[idx]))[:, :, :-1]
