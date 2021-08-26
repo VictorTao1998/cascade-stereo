@@ -31,8 +31,8 @@ class MessytableTestDataset(Dataset):
 
     def __getitem__(self, idx):
         if self.onReal:
-            img_L_rgb = np.array(Image.open(self.img_L[idx]).convert(mode='RGB'))
-            img_R_rgb = np.array(Image.open(self.img_R[idx]).convert(mode='RGB'))
+            img_L_rgb = np.array(Image.open(self.img_L[idx]).convert(mode='L'))
+            img_R_rgb = np.array(Image.open(self.img_R[idx]).convert(mode='L'))
         else:
             img_L_rgb = np.array(Image.open(self.img_L[idx]))[:, :, :-1]
             img_R_rgb = np.array(Image.open(self.img_R[idx]))[:, :, :-1]
